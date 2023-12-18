@@ -25,6 +25,7 @@ export class LevelScene extends Scene {
         this.timerEl = timerEl;
 
         this.container.appendChild(timerEl);
+        this.addDestroyHandler(() => this.timerEl?.remove())
         this.addDestroyTaskHandler(() => this.timerEl?.remove())
     }
 
@@ -32,7 +33,7 @@ export class LevelScene extends Scene {
         if (this.timerId !== null) {
             window.clearInterval(this.timerId)
         }
-        let timer = 15;
+        let timer = 20;
         this.renderTimer(timer);
         this.timerId = window.setInterval(() => {
             if (timer <= 0) {
@@ -87,7 +88,7 @@ export class LevelScene extends Scene {
         happyEl.textContent = 'УРОВЕНЬ ПРОЙДЕН';
 
 
-        const duration = 500;
+        const duration = 2000;
         const keyframes = [
             {
                 letterSpacing: 0,
@@ -241,7 +242,15 @@ export class LevelScene extends Scene {
             background
         });
 
-        this.tasks = this.getRandomTasks(tasks, 3);
+        this.tasks = this.getRandomTasks(tasks, 3).map((task) => {
+            if("answerVariable" in task) {
+                const original = task.success.map((idx) => task.answerVariable[idx])
+                task.answerVariable = this.getRandomTasks(task.answerVariable, task.answerVariable.length)
+                task.success = original.map((value) => task.answerVariable.findIndex((variable) => variable === value))
+            }
+            return task;
+        })
+
         this.tasksCount = this.tasks.length;
         this.currentTaskIndex = 0;
         this.task = this.tasks[this.currentTaskIndex];

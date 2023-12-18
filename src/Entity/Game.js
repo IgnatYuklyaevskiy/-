@@ -67,7 +67,7 @@ export class Game {
         return imgEl;
     }
 
-    initScene = (Scene) => {
+    initScene = (Scene) => {            //Если сцена есть то удаляем и создаём новую
         if (this.scene) {
             this.scene?.destroyScene();
         }

@@ -5,7 +5,7 @@ export class Game {
     scene = null;
     login = null;
     score = 0;
-    openLevels = [0, 1, 2];
+    openLevels = [0];
 
     constructor() {
         this.container = document.getElementById('game');

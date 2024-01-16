@@ -3,6 +3,7 @@ import {LevelOne} from "./levels/LevelOne";
 import {MenuScene} from "./MenuScene";
 import {LevelTwo} from "./levels/levelTwo";
 import {LevelThree} from "./levels/levelThree";
+import {LevelFour} from "./levels/levelFour";
 
 
 const levels = [
@@ -20,6 +21,11 @@ const levels = [
         title: 'Уровень 3',
         level: LevelThree,
         id: 2
+    },
+    {
+        title: 'Уровень 4',
+        level: LevelFour,
+        id: 3
     },
 ];
 

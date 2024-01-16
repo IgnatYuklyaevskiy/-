@@ -13,7 +13,7 @@ const tasks = [
 ]
 
 export class LevelThree extends LevelScene {
-    nextLevel = 'end';
+    nextLevel = 3;
 
     createText = () => {
         const textEl = this.createElement('div', {

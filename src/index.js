@@ -4,5 +4,5 @@ import { Game } from "./Entity/Game";
 
 const game = new Game();
 
-game.initScene(AuthScene);
+game.initScene(AuthScene);  //Запуск сцены
 

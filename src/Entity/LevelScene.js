@@ -33,7 +33,7 @@ export class LevelScene extends Scene {
         if (this.timerId !== null) {
             window.clearInterval(this.timerId)
         }
-        let timer = 20;
+        let timer = this.timeTask ?? 20;
         this.renderTimer(timer);
         this.timerId = window.setInterval(() => {
             if (timer <= 0) {
@@ -257,7 +257,7 @@ export class LevelScene extends Scene {
         this.selectedAnswers = new Set();
         this.levelScore = 0;
 
-        this.createTimer();
+        // this.createTimer();
 
         this.renderScore(this.levelScore);
         this.renderBack(() => {
